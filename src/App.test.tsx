@@ -228,7 +228,7 @@ describe("Edge Cases", () => {
     const noteTitleEX2 = screen.getByText("Expense 2");
     const noteCost1dollar = screen.getByText("$1");
     expect(noteTitleEX2).toBeInTheDocument();
-    expect(noteCost1dollar).toBeInTheDocument();
+    expect(noteCost1dollar).not.BeInTheDocument(); //TEST SHOULD BE WRONG
 
     // Checks that the alert shows up, because this is the alerts text, got this from stack overflow
     expect(alertSpy).toHaveBeenCalledWith("Warning: Budget is less than 0!");
