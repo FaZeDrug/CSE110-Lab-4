@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import { fetchBudget } from "../../utils/budget-utils";
+import { updateBudget } from "../../utils/budget-utils";
 
 const Budget = () => {
   const { budget, setBudget } = useContext(AppContext);
@@ -9,7 +10,7 @@ const Budget = () => {
     loadBudget();
   }, []);
 
-  // Function to load expenses and handle errors
+  // Function to load budget
   const loadBudget = async () => {
     try {
     const budget = await fetchBudget();
@@ -19,9 +20,25 @@ const Budget = () => {
     }
   };
 
+// <div>Budget: ${ budget }</div>
+
   return (
     <div className="alert alert-secondary p-3 d-flex align-items-center justify-content-between">
-      <div>Budget: ${ budget }</div>
+      <div>Budget: $</div>
+      <input
+            required
+            type="number"
+            id="budget"
+            value={budget}
+            onChange={(e) => {
+              const newBudget = parseInt(e.target.value);
+              setBudget(newBudget);
+              updateBudget(newBudget);
+            }}
+      ></input>
+      {/* <button type="submit" data-testid="Save">
+        Save
+      </button> */}
     </div>
   );
 };
