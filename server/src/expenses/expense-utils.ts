@@ -19,7 +19,20 @@ export function createExpenseServer(req: Request, res: Response, expenses: Expen
 }
 
 export function deleteExpense(req: Request, res: Response, expenses: Expense[]) {
-    // TO DO: Implement deleteExpense function
+    // deleteExpense function
+    const {id} = req.params;
+    if (!id) {
+        return res.status(400).send({ error: "Missing required fields" });
+    }
+    const updatedExpenses = expenses.filter((expense) => expense.id !== id);
+    if (updatedExpenses.length < expenses.length) {
+        expenses.length = 0;
+        expenses.push(...updatedExpenses);
+    }
+    else {
+        res.status(404).send("Delete fail");
+    }
+    res.status(200).send("Delete success");
 }
 
 export function getExpenses(req: Request, res: Response, expenses: Expense[]) {

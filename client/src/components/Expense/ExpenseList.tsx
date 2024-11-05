@@ -1,3 +1,4 @@
+import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import { AppContext } from "../../context/AppContext";
 import { useContext,useEffect } from "react";
@@ -5,7 +6,7 @@ import { Expense } from "../../types/types";
 import { fetchExpenses } from "../../utils/expense-utils";
 
 const ExpenseList = () => {
-  const { expenses,setExpenses } = useContext(AppContext);
+  const { expenses, setExpenses } = useContext(AppContext);
 
   // Fetch expenses on component mount
   useEffect(() => {

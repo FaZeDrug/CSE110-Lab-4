@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useState } from "react";
 import { Expense } from "../types/types";
 //import { Budget } from "../Budget/Budget"; dont uncommeny this
