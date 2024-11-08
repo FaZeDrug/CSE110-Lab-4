@@ -10,7 +10,7 @@ export const fetchBudget = async (): Promise<number> => {
 
     const jsonResponse = await response.json();
 
-	return jsonResponse.data.amount;
+	return jsonResponse.data;
 };
 
 // Function to update the budget in the backend. Method: PUT
@@ -25,5 +25,5 @@ export const updateBudget = async (budget: number): Promise<number> => {
 	// }
 
     const jsonResponse = await response.json();
-    return jsonResponse.data.amount;
+    return jsonResponse.data;
 };
